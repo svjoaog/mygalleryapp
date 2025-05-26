@@ -1,22 +1,20 @@
 import React, { useEffect, useState } from 'react';
 import {
   StyleSheet,
-  Text,
-  View,
 } from 'react-native';
 
-import { NavigationContainer } from '@react-navigation/native'; 
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import CameraScreen from './src/screens/CameraScreen';
+import GalleryScreen from './src/screens/GalleryScreen';
+import Navigator from './src/AppNavigation';
+
 
 const Stack = createNativeStackNavigator();
 export default function App(): React.JSX.Element {
   
   return (
-    <View style={styles.container}>
-      <CameraScreen />
-    </View>
+    <Navigator />
   );
 }
 
