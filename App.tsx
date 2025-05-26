@@ -5,8 +5,6 @@ import {
 
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-import CameraScreen from './src/screens/CameraScreen';
-import GalleryScreen from './src/screens/GalleryScreen';
 import Navigator from './src/AppNavigation';
 
 

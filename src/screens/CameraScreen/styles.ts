@@ -11,8 +11,10 @@ export const styles = StyleSheet.create({
     base:{
         height: 70,
         backgroundColor: 'white',
-        justifyContent: 'center',
-        alignItems: 'center'
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        flexDirection: 'row',
+        margin: 10
     },
     btnTakePhoto:{
         height: 50,

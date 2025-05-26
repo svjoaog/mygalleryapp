@@ -7,7 +7,7 @@ import { savePhoto } from "../../services/storageServices";
 import { useNavigation } from "@react-navigation/native";
 
 export default function CameraScreen(): React.JSX.Element{
-  const navigation = useNavigation()
+  const navigation = useNavigation();
   const camera = useRef<Camera>(null);
   const device = useCameraDevice('back');
 
@@ -22,7 +22,6 @@ export default function CameraScreen(): React.JSX.Element{
     if(camera.current !== null){
       const photo = await camera.current.takePhoto({});
       const savePath = await savePhoto(photo.path);
-      console.log('Foto salva em: ', savePath)
     } 
   }
 
@@ -44,7 +43,7 @@ export default function CameraScreen(): React.JSX.Element{
           onPress={takePhoto}>
             <View style={styles.btnArea}></View>
           </TouchableOpacity>
-          <Button title="Go to gallery"  onPress={() => navigation.navigate('Gallery' as never)}/>
+          <Button title="Gallery"  onPress={() => navigation.navigate('Gallery' as never)}/>
       </View>
     </View>
   )
