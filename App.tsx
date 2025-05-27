@@ -15,10 +15,3 @@ export default function App(): React.JSX.Element {
     <Navigator />
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-});
-
