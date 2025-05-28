@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useState } from "react";
 import {View, Text, ScrollView, Image, TouchableOpacity} from 'react-native';
 import { styles } from "./styles";
 import { listPhotos } from "../../services/storageServices";
-import { ParamListBase, useNavigation } from "@react-navigation/native";
+import { useFocusEffect, useNavigation } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { RootStackParamList } from "../../types";
 
@@ -10,24 +10,24 @@ export default function GalleryScreen(): React.JSX.Element{
     const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
     const [photos, setPhotos] = useState<string[]>([])
 
-    useEffect( () => {
+    useFocusEffect(
+        useCallback( () => {
         const getPhotos = async () =>{
             const photos = await listPhotos();
             setPhotos(photos);
         }
-        getPhotos()
+        getPhotos();
     }, [])
-
-
-    console.log('Fotos encontradas:', photos);
+    )
 
     const imageDetails = (photoLocation: string) => {
-        navigation.navigate('Detalhes', {photoLocation})
+        navigation.navigate('Detalhes', {photoLocation});
     }
 
     const gotoCamera = () =>{
-        navigation.navigate('Camera')
+        navigation.navigate('Camera');
     }
+
     return(
         <View style={styles.container}>
             <View style={styles.photosContainer}>
@@ -51,6 +51,11 @@ export default function GalleryScreen(): React.JSX.Element{
                     <Image source={require('../../assets/images/iconCamera.png')} style={styles.cameraLogo}/>
                 </TouchableOpacity>
                 </ScrollView>
+                <View style={styles.bottomText}>
+                    {photos.length > 0 ?(
+                        <Text>Fotos: {photos.length} foto(s).</Text>
+                    ) : (null)};
+                </View>
             </View>
         </View>
     )

@@ -50,5 +50,17 @@ export const styles = StyleSheet.create({
         justifyContent: 'center',
         padding: 20,
     
+    },
+    loaderContainer:{
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    bottomText:{
+        alignItems: 'center',
+        justifyContent: 'center',
+        bottom: 20,
+        left: 0,
+        right: 0
     }
 })
