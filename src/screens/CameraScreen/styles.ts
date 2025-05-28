@@ -3,15 +3,15 @@ import { StyleSheet } from "react-native";
 
 export const styles = StyleSheet.create({
     container:{
-        flex: 1
+        flex: 1,
+        backgroundColor: '#E3B8B8'
     },
     cameraScreen:{
         flex: 1
     },
     base:{
         height: 70,
-        backgroundColor: 'white',
-        justifyContent: 'space-between',
+        justifyContent: 'center',
         alignItems: 'center',
         flexDirection: 'row',
         margin: 10
@@ -21,7 +21,7 @@ export const styles = StyleSheet.create({
         width: 50,
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: '#D3D3D3',
+        backgroundColor: 'white',
         borderRadius: 150,
         margin: 20
     },

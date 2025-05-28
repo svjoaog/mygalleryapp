@@ -1,5 +1,5 @@
 export type RootStackParamList = {
-    Gallery: undefined;
+    Galeria: undefined;
     Camera: undefined;
-    Detail: { photoLocation: string };
+    Detalhes: { photoLocation: string };
 };

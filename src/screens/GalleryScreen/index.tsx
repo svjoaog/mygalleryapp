@@ -15,7 +15,6 @@ export default function GalleryScreen(): React.JSX.Element{
             const photos = await listPhotos();
             setPhotos(photos);
         }
-
         getPhotos()
     }, [])
 
@@ -23,11 +22,14 @@ export default function GalleryScreen(): React.JSX.Element{
     console.log('Fotos encontradas:', photos);
 
     const imageDetails = (photoLocation: string) => {
-        navigation.navigate('Detail', {photoLocation})
+        navigation.navigate('Detalhes', {photoLocation})
+    }
+
+    const gotoCamera = () =>{
+        navigation.navigate('Camera')
     }
     return(
         <View style={styles.container}>
-            <Text>Galeria</Text>
             <View style={styles.photosContainer}>
             <ScrollView contentContainerStyle={styles.contentContainer}>
                 {photos.length > 0 ? (
@@ -40,8 +42,14 @@ export default function GalleryScreen(): React.JSX.Element{
                         </TouchableOpacity>
                     ))
                 ) : (
+                    <View style={styles.emptyContainer}>
                         <Text style={styles.textEmpty}>Sua biblioteca está vazia. </Text>
+                    </View>
                 )}
+
+                <TouchableOpacity style={styles.cameraBtn} onPress={() => gotoCamera()}>
+                    <Image source={require('../../assets/images/iconCamera.png')} style={styles.cameraLogo}/>
+                </TouchableOpacity>
                 </ScrollView>
             </View>
         </View>

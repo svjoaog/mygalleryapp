@@ -6,7 +6,7 @@ import { getPhotoInfo } from "../../services/storageServices";
 
 import { styles } from "./styles";
 
-type DetailProps = NativeStackScreenProps<RootStackParamList, 'Detail'>;
+type DetailProps = NativeStackScreenProps<RootStackParamList, 'Detalhes'>;
 
 export default function DetailScreen({ route }: DetailProps) {
   const { photoLocation } = route.params;
@@ -24,18 +24,34 @@ export default function DetailScreen({ route }: DetailProps) {
 
 
   return (
-    <View style={styles.container}> 
-      <Image source={{ uri: photoLocation }} style={styles.image} />
-
-      <View style={styles.textContainer}>
+    <View style={styles.container}>
+      <View style={styles.imageContainer}>
+        <Image source={{ uri: photoLocation }} style={styles.image} />
+      </View> 
+      
         {photoInfo && (
           <>
-            <Text style={styles.textInfo}>Data/Hora:</Text> <Text style={styles.info}>{new Date(photoInfo.date).toLocaleString()}</Text>
-            <Text style={styles.textInfo}>Latitude:</Text> <Text style={styles.info}>{photoInfo.location.latitude}</Text>
-            <Text style={styles.textInfo}>Longitude:</Text> <Text style={styles.info}>{photoInfo.location.longitude}</Text>
+            <View style={styles.textContainer}>
+              <Text style={styles.textInfo}>Data/Hora:  <Text style={styles.info}>
+                {new Date(photoInfo.date).toLocaleString('pt-BR', {
+                                day: '2-digit',
+                                month: '2-digit',
+                                year: 'numeric',
+                                hour: '2-digit',
+                                minute: '2-digit',
+                              })}</Text>
+              </Text> 
+
+              <Text style={styles.textInfo}>Latitude:  <Text style={styles.info}>{photoInfo.location.latitude}</Text>
+              </Text>
+
+
+                <Text style={styles.textInfo}>Longitude:  <Text style={styles.info}>{photoInfo.location.longitude}</Text>
+                </Text>
+            </View>
+
           </>
         )}
-      </View>
     </View>
   );
 }
