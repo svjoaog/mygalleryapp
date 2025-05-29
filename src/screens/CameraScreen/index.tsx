@@ -1,10 +1,9 @@
-import React, { useCallback,useEffect,useRef, useState } from "react"
+import React, { useEffect,useRef, useState } from "react"
 import {View, TouchableOpacity, ActivityIndicator} from 'react-native'
 import {styles} from './styles';
 import { Camera, useCameraDevice} from "react-native-vision-camera";
-import Geolocation from "@react-native-community/geolocation";
 import { savePhoto, getLocation } from "../../services/storageServices";
-import {useFocusEffect, useNavigation} from "@react-navigation/native";
+import {useNavigation} from "@react-navigation/native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { RootStackParamList } from "../../types";
 
@@ -13,17 +12,7 @@ export default function CameraScreen(): React.JSX.Element{
   const [isCapturing, setIsCapturing] = useState(false);
   const camera = useRef<Camera>(null);
   const device = useCameraDevice('back');
-  
-  useFocusEffect(
-    useCallback( () => {
-      async function getPermissions(){
-        const newCameraPermission = await Camera.requestCameraPermission();
-        const newLocationPermission = await Geolocation.requestAuthorization();
-      }
-      getPermissions();
-    }, [])
-  );
-  
+
   useEffect(() => {
     if (!isCapturing) return;
     const beforeRemoveListener = navigation.addListener('beforeRemove', (e) => {
@@ -57,9 +46,10 @@ export default function CameraScreen(): React.JSX.Element{
             device={device}
             isActive={true}
             photo={true}
+            enableLocation={true}
           />
           {isCapturing && (
-            <View style={styles.loadingOverlay}>
+            <View style={styles.loadingArea}>
               <ActivityIndicator size="large" color="#ffffff" />
             </View>
           )}

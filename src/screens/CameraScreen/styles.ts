@@ -1,4 +1,3 @@
-import React from "react";
 import { StyleSheet } from "react-native";
 
 export const styles = StyleSheet.create({
@@ -33,13 +32,11 @@ export const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center'
     },
-    loadingOverlay:{
+    loadingArea:{
         ...StyleSheet.absoluteFillObject,
         backgroundColor: 'rgba(0,0,0,0.5)',
         justifyContent: 'center',
         alignItems: 'center',
-        zIndex: 9999,
-        elevation: 9999,
         position: 'absolute'
     }
 })

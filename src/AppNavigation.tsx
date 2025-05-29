@@ -6,10 +6,9 @@ import { RootStackParamList } from "./types";
 import GalleryScreen from "./screens/GalleryScreen";
 import CameraScreen from "./screens/CameraScreen";
 import DetailScreen from "./screens/DetailScreen";
+import { Image } from "react-native";
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
-
-
 
 export default function Navigator():React.JSX.Element{
     return(
@@ -32,4 +31,13 @@ const headerStyles = (title: string): NativeStackNavigationOptions => ({
     headerTitleStyle: {
       fontWeight: 'bold',
     },
+    headerLeft: title === 'Galeria'
+      ? () => (
+            <Image
+              source={require('./assets/images/galeria.png')}
+              style={{ width: 30, height: 30, marginRight: 10 }}
+              resizeMode="contain"
+            />
+        )
+      : undefined
 });

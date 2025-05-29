@@ -7,6 +7,15 @@
 	<key>NSMicrophoneUsageDescription</key>
 	<string>$(PRODUCT_NAME) needs access to your Microphone.</string>
 
+
+	
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>$(PRODUCT_NAME) needs access to your Location.</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>$(PRODUCT_NAME) needs access to your Location.</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>$(PRODUCT_NAME) needs access to your Location.</string>
+
 	
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
